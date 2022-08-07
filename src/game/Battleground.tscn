@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/game/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/Battleground.gd" type="Script" id=2]
+
+[node name="Battleground" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+script = ExtResource( 2 )
+
+[node name="VBoxPlayer" parent="." instance=ExtResource( 1 )]
+anchor_bottom = 0.5
+
+[node name="VBoxEnemy" parent="." instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_right = 1.0
+
+[node name="Panel" type="Panel" parent="."]
+anchor_top = 0.5
+anchor_right = 0.475
+anchor_bottom = 1.0
+
+[node name="AttackButton" type="Button" parent="Panel"]
+anchor_right = 1.0
+margin_bottom = 20.0
+text = "ATTACK"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.525
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Start the fight"
+
+[connection signal="button_up" from="Panel/AttackButton" to="." method="_on_AttackButton_button_up"]

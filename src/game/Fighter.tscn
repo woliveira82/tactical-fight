@@ -1,0 +1,94 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Fighter.gd" type="Script" id=1]
+
+[node name="VBoxContainerLeft" type="VBoxContainer"]
+anchor_right = 0.5
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="NameLabel" type="Label" parent="."]
+margin_right = 512.0
+margin_bottom = 14.0
+text = "PLAYER"
+align = 1
+valign = 1
+
+[node name="Physical" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 512.0
+margin_bottom = 32.0
+
+[node name="AttributeLabel" type="Label" parent="Physical"]
+margin_right = 56.0
+margin_bottom = 14.0
+text = "Physical:"
+
+[node name="ValueLabel" type="Label" parent="Physical"]
+margin_left = 60.0
+margin_right = 68.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Agility" type="HBoxContainer" parent="."]
+margin_top = 36.0
+margin_right = 512.0
+margin_bottom = 50.0
+
+[node name="AttributeLabel" type="Label" parent="Agility"]
+margin_right = 44.0
+margin_bottom = 14.0
+text = "Agility:"
+
+[node name="ValueLabel" type="Label" parent="Agility"]
+margin_left = 48.0
+margin_right = 56.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Social" type="HBoxContainer" parent="."]
+margin_top = 54.0
+margin_right = 512.0
+margin_bottom = 68.0
+
+[node name="AttributeLabel" type="Label" parent="Social"]
+margin_right = 41.0
+margin_bottom = 14.0
+text = "Social:"
+
+[node name="ValueLabel" type="Label" parent="Social"]
+margin_left = 45.0
+margin_right = 53.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Mental" type="HBoxContainer" parent="."]
+margin_top = 72.0
+margin_right = 512.0
+margin_bottom = 86.0
+
+[node name="AttributeLabel" type="Label" parent="Mental"]
+margin_right = 48.0
+margin_bottom = 14.0
+text = "Mental:"
+
+[node name="ValueLabel" type="Label" parent="Mental"]
+margin_left = 52.0
+margin_right = 60.0
+margin_bottom = 14.0
+text = "0"
+
+[node name="Label" type="Label" parent="."]
+margin_top = 90.0
+margin_right = 512.0
+margin_bottom = 104.0
+text = "0 / 100"
+align = 1
+valign = 1
+
+[node name="HealthColorRect" type="ColorRect" parent="Label"]
+show_behind_parent = true
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 1 )
