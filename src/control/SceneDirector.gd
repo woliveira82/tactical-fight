@@ -5,6 +5,7 @@ var scene_name: String
 
 func _ready():
 	$ColorRect.self_modulate.a = 0.0
+	$ColorRect.visible = false
 
 
 func change_to(new_scene_name):
