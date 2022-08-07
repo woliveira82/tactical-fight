@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneDirector="*res://src/control/SceneDirector.tscn"
+GameData="*res://src/game/GameData.gd"
 
 [physics]
 

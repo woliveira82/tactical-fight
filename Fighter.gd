@@ -1,30 +1,22 @@
 extends VBoxContainer
 
-var fighter_name = "PLAYER"
-var physical = 3
-var agility = 3
-var social = 3
-var mental = 3
 
-var health = 70
-var current_health = health
+func set_fighter(fighter_data):
+	$NameLabel.text = fighter_data["name"]
+	_update_attributes(fighter_data["attr"])
+	_update_stats(fighter_data["stats"])
 
 
-func _ready():
-	health = 70 + (10 * physical)
-	current_health = health
-	_update_label()
+func _update_attributes(attributes_data):
+	$Physical/ValueLabel.text = str(attributes_data["physical"])
+	$Agility/ValueLabel.text = str(attributes_data["agility"])
+	$Social/ValueLabel.text = str(attributes_data["social"])
+	$Mental/ValueLabel.text = str(attributes_data["mental"])
 
 
-func _update_label():
-	$NameLabel.text = fighter_name
-	$Physical/ValueLabel.text = str(physical)
-	$Agility/ValueLabel.text = str(agility)
-	$Social/ValueLabel.text = str(social)
-	$Mental/ValueLabel.text = str(mental)
-	
-	$Label.text = "%d / %d" % [current_health, health]
+func _update_stats(stats_data):
+	$Label.text = "%d / %d" % [stats_data["health"], stats_data["max_health"]]
 	$Label/HealthColorRect.rect_size.y = 15
 	$Label/HealthColorRect.rect_size.x = (
-		current_health / health * $Label.rect_size.x * 0.8
+		stats_data["health"] / stats_data["max_health"] * $Label.rect_size.x * 0.8
 	)
