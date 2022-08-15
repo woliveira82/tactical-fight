@@ -36,4 +36,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Start the fight"
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="button_up" from="Panel/AttackButton" to="." method="_on_AttackButton_button_up"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

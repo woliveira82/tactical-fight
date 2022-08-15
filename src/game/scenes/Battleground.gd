@@ -26,13 +26,21 @@ func _show_results(attacker_name, defender_name, damage):
 	$RichTextLabel.text = final_result + '\n' + $RichTextLabel.text
 
 
+func _prepere_couter_attack():
+	$Panel/AttackButton.disabled = true
+	$Timer.start(1)
+
+
 func _on_AttackButton_button_up():
 	var damage = GameData.attack(player, enemy)
 	_show_results(player.char_name, enemy.char_name, damage)
 	$VBoxEnemy.update_health()
+	_prepere_couter_attack()
 
 
-func _update_health(new_health):
-	pass
-
-
+func _on_Timer_timeout():
+	var damage = GameData.attack(enemy, player)
+	_show_results(enemy.char_name, player.char_name, damage)
+	$VBoxPlayer.update_health()
+	$Panel/AttackButton.disabled = false
+	
