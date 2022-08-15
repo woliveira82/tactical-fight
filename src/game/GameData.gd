@@ -1,43 +1,28 @@
 extends Node
 
-
-var player = {
-	"name": "Player",
-	"attr": {
-		"physical": 3,
-		"agility": 3,
-		"social": 3,
-		"mental": 3,
-	},
-	"stats": {
-		"max_health": 70,
-		"health": 70,
-	}
-}
-
-var enemy = {
-	"name": "Enemy",
-	"attr": {
-		"physical": 3,
-		"agility": 3,
-		"social": 3,
-		"mental": 3,
-	},
-	"stats": {
-		"max_health": 70,
-		"health": 70,
-	}
-}
-
 var rng = RandomNumberGenerator.new()
+
+onready var player = $Player
+onready var enemy = $Enemy
+
+const ATK_CHANCE: float = 0.8
+const DFS_CHANCE: float = 0.2
+const BASE_DAMAGE: int = 10
 
 
 func _ready():
 	rng.randomize()
-	_update_stats(player)
-	_update_stats(enemy)
+	player.setup_stats('Player')
+	enemy.setup_stats('Enemy')
 
 
-func _update_stats(fighter):
-	fighter["stats"]["max_health"] = 70 + 10 * fighter["attr"]["physical"]
-	fighter["stats"]["health"] = fighter["stats"]["max_health"]
+func attack(attacker, defender):
+	var agi_diference = (attacker.agility - defender.agility) / 100
+	if rng.randf() < (ATK_CHANCE + agi_diference):
+		var phy_diference = attacker.physical - defender.physical
+		var damage = phy_diference + rng.randi_range(5, 10)
+		damage = 1 if damage < 1 else damage
+		defender.damage(damage)
+		return damage
+	
+	return 0

@@ -1,22 +1,25 @@
 extends VBoxContainer
 
-
-func set_fighter(fighter_data):
-	$NameLabel.text = fighter_data["name"]
-	_update_attributes(fighter_data["attr"])
-	_update_stats(fighter_data["stats"])
+var fighter
 
 
-func _update_attributes(attributes_data):
-	$Physical/ValueLabel.text = str(attributes_data["physical"])
-	$Agility/ValueLabel.text = str(attributes_data["agility"])
-	$Social/ValueLabel.text = str(attributes_data["social"])
-	$Mental/ValueLabel.text = str(attributes_data["mental"])
+func set_fighter(new_fighter):
+	fighter = new_fighter
+	update_stats()
+	update_health()
 
 
-func _update_stats(stats_data):
-	$Label.text = "%d / %d" % [stats_data["health"], stats_data["max_health"]]
+func update_stats():
+	$NameLabel.text = fighter.char_name
+	$Physical/ValueLabel.text = str(fighter.physical)
+	$Agility/ValueLabel.text = str(fighter.agility)
+	$Social/ValueLabel.text = str(fighter.social)
+	$Mental/ValueLabel.text = str(fighter.mental)
+
+
+func update_health():
+	$Label.text = "%d / %d" % [fighter.health, fighter.max_health]
 	$Label/HealthColorRect.rect_size.y = 15
-	$Label/HealthColorRect.rect_size.x = (
-		stats_data["health"] / stats_data["max_health"] * $Label.rect_size.x * 0.8
-	)
+	var max_size = $Label.rect_size.x * 0.8
+	var new_size = float(fighter.health) / float(fighter.max_health) * max_size
+	$Label/HealthColorRect.rect_size.x = new_size

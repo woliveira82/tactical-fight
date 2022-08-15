@@ -14,4 +14,4 @@ func change_to(new_scene_name):
 
 
 func _new_scene():
-	var value = get_tree().change_scene(scene_name)
+	get_tree().change_scene(scene_name)
