@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/game/scenes/Fighter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/game/scenes/Battleground.gd" type="Script" id=2]
+[ext_resource path="res://src/game/scenes/v1/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/game/scenes/v1/Battleground.gd" type="Script" id=2]
 
 [node name="Battleground" type="Control"]
 anchor_right = 1.0

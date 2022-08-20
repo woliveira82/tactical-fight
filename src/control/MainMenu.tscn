@@ -8,15 +8,28 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 
-[node name="Button" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
+margin_left = -100.0
 margin_top = -20.0
-rect_scale = Vector2( 2, 2 )
-mouse_default_cursor_shape = 2
-text = "START"
+margin_right = 100.0
+margin_bottom = 20.0
+alignment = 1
 
-[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
+[node name="Version1" type="Button" parent="VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 20.0
+mouse_default_cursor_shape = 2
+text = "STATS"
+
+[node name="Version2" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 200.0
+margin_bottom = 44.0
+mouse_default_cursor_shape = 2
+text = "BATTLEGROUND"
+
+[connection signal="button_up" from="VBoxContainer/Version1" to="." method="_on_Button_button_up"]
