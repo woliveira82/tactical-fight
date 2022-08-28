@@ -33,3 +33,4 @@ mouse_default_cursor_shape = 2
 text = "BATTLEGROUND"
 
 [connection signal="button_up" from="VBoxContainer/Version1" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Version2" to="." method="_on_Version2_button_up"]
